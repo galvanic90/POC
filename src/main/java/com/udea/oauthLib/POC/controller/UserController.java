@@ -12,11 +12,18 @@ import com.udea.oauthLib.POC.repository.UserRepository;
 import com.udea.oauthLib.POC.entity.User;
 import com.udea.oauthLib.POC.DTO.UserDTO;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
     @Autowired
     UserRepository userRepository;
+
+    @GetMapping("/all")
+    public ResponseEntity<List<UserDTO>> getAllUsers() {
+        return ResponseEntity.ok(UserDTO.listoOfUsers(userRepository.findAll()));
+    }
 
     @GetMapping("/{id}")
     @PreAuthorize("#user.id == #id")

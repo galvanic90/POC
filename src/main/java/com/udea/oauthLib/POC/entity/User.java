@@ -10,9 +10,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.mongodb.lang.NonNull;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-
 
 @Document
 @Data
@@ -23,31 +20,32 @@ public class User implements UserDetails {
     private String id;
 
     @NonNull
-    private String userName;
+    private String username;
 
     @NonNull
     private String password;
 
     public User(){}
 
-    public User(String id, String userName, String password) {
+    public User(String id, String username, String password) {
         super();
         this.id = id;
-        this.userName = userName;
+        this.username = username;
         this.password = password;
     }
-    public User( String userName, String password) {
+
+    public User( String username, String password) {
         super();
-        this.userName = userName;
+        this.username = username;
         this.password = password;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -87,10 +85,6 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-    @Override
-    public String getUsername() {
-        // TODO Auto-generated method stub
-        return null;
-    }
+
 
 }
